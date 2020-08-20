@@ -1,0 +1,53 @@
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+img {
+  width: 100%;
+  object-fit: cover;
+}
+
+button,
+button:hover,
+button:focus,
+button:active {
+  outline: none;
+  box-shadow: unset;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  font-size: 14px;
+}
+
+.card__title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 75px;
+}
+
+.overview {
+  height: 0;
+  opacity: 0;
+  overflow-y: scroll;
+  visibility: hidden;
+  transition: all 0.2s linear;
+}
+
+.overview--active {
+  height: 150px;
+  opacity: 1;
+  transition: all 0.2s linear;
+  visibility: visible;
+}
+
+.rate {
+  display: flex;
+  justify-content: center;
+  display: contents;
+}
