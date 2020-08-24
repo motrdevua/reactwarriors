@@ -18,7 +18,7 @@ class MovieItem extends React.Component {
     } = this.props;
 
     return (
-      <div className="col-lg-6 col-md-6 col-sm-6 col-12">
+      <div className="col-lg-6 col-md-6 col-sm-6 col-12 mb-3 ">
         <div className="card">
           <p className="card__title mb-0">{movie.title}</p>
           <img
@@ -33,31 +33,28 @@ class MovieItem extends React.Component {
           <div
             style={{ width: '100%' }}
             className="p-1 d-flex justify-content-between align-items-center">
-            {this.state.moviesWillWatch ? (
-              <button
-                type="button"
-                className="btn btn-secondary p-1"
-                onClick={() => {
+            <button
+              type="button"
+              className={`btn p-1 ${
+                this.state.moviesWillWatch ? 'btn-secondary' : 'btn-primary'
+              }`}
+              onClick={() => {
+                if (this.state.moviesWillWatch) {
                   this.setState({
                     moviesWillWatch: false
                   });
                   removeMovieFromWillWatch(movie);
-                }}>
-                will watch remove
-              </button>
-            ) : (
-              <button
-                type="button"
-                className="btn btn-primary p-1"
-                onClick={() => {
-                  addMovieToWillWatch(movie);
+                } else {
                   this.setState({
                     moviesWillWatch: true
                   });
-                }}>
-                will watch add
-              </button>
-            )}
+                  addMovieToWillWatch(movie);
+                }
+              }}>
+              {this.state.moviesWillWatch
+                ? 'will watch remove'
+                : 'will watch add'}
+            </button>
             <button
               type="button"
               className="btn btn-warning p-1"

@@ -3,6 +3,7 @@ import './styles.css';
 
 import { moviesData } from './moviesData';
 import MovieItem from './MovieItem';
+import MovieTabs from './MovieTabs';
 
 const API_URL = 'https://api.themoviedb.org/3';
 
@@ -16,7 +17,8 @@ class App extends React.Component {
 
     this.state = {
       movies: moviesData,
-      moviesWillWatch: []
+      moviesWillWatch: [],
+      sort_by: 'popularity.desc'
     };
 
     this.removeMovie = this.removeMovie.bind(this);
@@ -55,7 +57,9 @@ class App extends React.Component {
   componentDidMount() {
     console.log('didMount');
 
-    fetch(`${API_URL}/discover/movie?api_key=${API_KEY_3}`)
+    fetch(
+      `${API_URL}/discover/movie?api_key=${API_KEY_3}&sort_by=${this.state.sort_by}`
+    )
       .then((response) => {
         return response.json();
       })
@@ -73,6 +77,11 @@ class App extends React.Component {
           <div className="col-9 p-3" style={{ background: '#ccc' }}>
             <div className="container">
               <div className="row">
+                <div className="col-12 pb-3">
+                  <MovieTabs sort_by={this.state.sort_by} />
+                </div>
+              </div>
+              <div className="row p-0">
                 {this.state.movies.map((movie) => {
                   return (
                     <MovieItem
