@@ -5,7 +5,7 @@ class MovieItem extends React.Component {
     super();
 
     this.state = {
-      willWatch: false
+      moviesWillWatch: false
     };
   }
 
@@ -18,7 +18,7 @@ class MovieItem extends React.Component {
     } = this.props;
 
     return (
-      <div className="col-lg-6 col-md-6 col-sm-6 col-12 mt-3 ">
+      <div className="col-lg-6 col-md-6 col-sm-6 col-12">
         <div className="card">
           <p className="card__title mb-0">{movie.title}</p>
           <img
@@ -33,15 +33,15 @@ class MovieItem extends React.Component {
           <div
             style={{ width: '100%' }}
             className="p-1 d-flex justify-content-between align-items-center">
-            {this.state.willWatch ? (
+            {this.state.moviesWillWatch ? (
               <button
                 type="button"
                 className="btn btn-secondary p-1"
                 onClick={() => {
-                  removeMovieFromWillWatch(movie);
                   this.setState({
-                    willWatch: false
+                    moviesWillWatch: false
                   });
+                  removeMovieFromWillWatch(movie);
                 }}>
                 will watch remove
               </button>
@@ -52,7 +52,7 @@ class MovieItem extends React.Component {
                 onClick={() => {
                   addMovieToWillWatch(movie);
                   this.setState({
-                    willWatch: true
+                    moviesWillWatch: true
                   });
                 }}>
                 will watch add
@@ -61,7 +61,7 @@ class MovieItem extends React.Component {
             <button
               type="button"
               className="btn btn-warning p-1"
-              onClick={removeMovie.bind(this, movie)}>
+              onClick={removeMovie.bind(null, movie)}>
               delete
             </button>
           </div>

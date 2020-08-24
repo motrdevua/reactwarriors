@@ -27,31 +27,30 @@ class App extends React.Component {
     const updateMovies = this.state.movies.filter((item) => {
       return item.id !== movie.id;
     });
-    this.setState({
-      movies: updateMovies
+    const updateMoviesWillWatch = this.state.moviesWillWatch.filter((item) => {
+      return item.id !== movie.id;
     });
-  }
-
-  addMovieToWillWatch(movie) {
-    // const updateMoviesWillWatch = [...this.state.moviesWillWatch];
-    // updateMoviesWillWatch.push(movie);
-
-    const updateMoviesWillWatch = [...this.state.moviesWillWatch, movie];
     this.setState({
+      movies: updateMovies,
       moviesWillWatch: updateMoviesWillWatch
     });
   }
 
-  removeMovieFromWillWatch(movie) {
-    console.log(this.state);
+  addMovieToWillWatch = (movie) => {
+    const updateMoviesWillWatch = [...this.state.moviesWillWatch, movie];
+    this.setState({
+      moviesWillWatch: updateMoviesWillWatch
+    });
+  };
 
+  removeMovieFromWillWatch = (movie) => {
     const updateMoviesWillWatch = this.state.moviesWillWatch.filter((item) => {
       return item.id !== movie.id;
     });
     this.setState({
       moviesWillWatch: updateMoviesWillWatch
     });
-  }
+  };
 
   componentDidMount() {
     console.log('didMount');
@@ -69,11 +68,11 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="container m-3">
         <div className="row">
-          <div className="col-9" style={{ background: '#ccc' }}>
-            <div className="container  p-0">
-              <div className="row p-0">
+          <div className="col-9 p-3" style={{ background: '#ccc' }}>
+            <div className="container">
+              <div className="row">
                 {this.state.movies.map((movie) => {
                   return (
                     <MovieItem

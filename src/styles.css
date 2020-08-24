@@ -13,6 +13,7 @@ button:focus,
 button:active {
   outline: none;
   box-shadow: unset;
+  font-size: 12px !important;
 }
 .card {
   display: flex;
@@ -21,8 +22,9 @@ button:active {
   align-items: center;
   width: 100%;
   font-size: 14px;
+  border: 0px;
+  margin: 15px 0 0 0;
 }
-
 .card__title {
   display: flex;
   justify-content: center;
