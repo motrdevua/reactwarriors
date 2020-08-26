@@ -18,7 +18,7 @@ class App extends React.Component {
     this.state = {
       movies: moviesData,
       moviesWillWatch: [],
-      sort_by: 'popularity.desc'
+      sort_by: 'revenue.desc'
     };
 
     this.removeMovie = this.removeMovie.bind(this);
@@ -70,6 +70,12 @@ class App extends React.Component {
       });
   }
 
+  updateSortBy = (value) => {
+    this.setState({
+      sort_by: value
+    });
+  };
+
   render() {
     return (
       <div className="container-fluid m-3">
@@ -78,7 +84,10 @@ class App extends React.Component {
             <div className="container">
               <div className="row">
                 <div className="col-12 pb-3">
-                  <MovieTabs sort_by={this.state.sort_by} />
+                  <MovieTabs
+                    sort_by={this.state.sort_by}
+                    updateSortBy={this.updateSortBy}
+                  />
                 </div>
               </div>
               <div className="row p-0">

@@ -66,3 +66,13 @@ button:active {
 .tabs li {
   margin: 0 15px 0 0;
 }
+
+.nav-link {
+  background: #bbb;
+  transition: all 0.2s linear;
+  cursor: pointer;
+}
+.nav-link:hover {
+  transition: all 0.2s linear;
+  cursor: pointer;
+}
