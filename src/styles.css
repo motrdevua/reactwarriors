@@ -16,6 +16,9 @@ button:active {
   font-size: 12px !important;
 }
 
+body {
+  background: #eee;
+}
 .card {
   display: flex;
   flex-direction: column;
@@ -24,6 +27,8 @@ button:active {
   width: 100%;
   font-size: 14px;
   border: 0px;
+background: #fff;
+box-shadow: 0 0 5px 0 rgba(83, 83, 83, .2);
 }
 
 .card__title {
@@ -32,6 +37,10 @@ button:active {
   align-items: center;
   text-align: center;
   min-height: 75px;
+}
+
+.card img {
+  max-height: 315px;
 }
 
 .overview {

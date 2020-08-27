@@ -9,6 +9,10 @@ class MovieItem extends React.Component {
     };
   }
 
+  // componentWillUnmount() {
+  //   console.log('unmount');
+  // }
+
   render() {
     const {
       movie,
@@ -37,7 +41,7 @@ class MovieItem extends React.Component {
     };
 
     return (
-      <div className="col-lg-6 col-md-6 col-sm-6 col-12 mb-3 ">
+      <div className="col-6 mb-3">
         <div className="card">
           <p className="card__title mb-0">{movie.title}</p>
           <img

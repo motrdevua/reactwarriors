@@ -25,6 +25,20 @@ class App extends React.Component {
     this.addMovieToWillWatch = this.addMovieToWillWatch.bind(this);
   }
 
+  getMovies() {
+    fetch(
+      `${API_URL}/discover/movie?api_key=${API_KEY_3}&sort_by=${this.state.sort_by}`
+    )
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        this.setState({
+          movies: data.results
+        });
+      });
+  }
+
   removeMovie(movie) {
     const updateMovies = this.state.movies.filter((item) => {
       return item.id !== movie.id;
@@ -55,19 +69,13 @@ class App extends React.Component {
   };
 
   componentDidMount() {
-    console.log('didMount');
+    this.getMovies();
+  }
 
-    fetch(
-      `${API_URL}/discover/movie?api_key=${API_KEY_3}&sort_by=${this.state.sort_by}`
-    )
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        this.setState({
-          movies: data.results
-        });
-      });
+  componentDidUpdate(prevState) {
+    if (prevState.sort_by !== this.state.sort_by) {
+      this.getMovies();
+    }
   }
 
   updateSortBy = (value) => {
@@ -77,22 +85,48 @@ class App extends React.Component {
   };
 
   render() {
-    console.log(this.state.sort_by);
-
     return (
       <div className="container m-3">
         <div className="row">
-          <div className="col-9 p-3" style={{ background: '#ccc' }}>
-            <div className="container">
-              <div className="row">
-                <div className="col-12 pb-3">
+          <div className="col-9 p-3">
+            <div className="container-fluid" style={{ position: 'relative' }}>
+              <div
+                className="row"
+                style={{
+                  position: 'fixed',
+                  top: 0,
+                  left: '15px',
+                  width: '100%',
+                  zIndex: 9,
+                  background: '#ccc'
+                }}>
+                <div className="col-9 p-3">
                   <MovieTabs
                     sort_by={this.state.sort_by}
                     updateSortBy={this.updateSortBy}
                   />
                 </div>
+                <div
+                  className="col-3 pt-4"
+                  style={{ position: 'relative', background: '#aaa' }}>
+                  <div
+                    className="d-flex justify-content-center align-items-center"
+                    style={{ position: 'fixed' }}>
+                    <p>Will watch:</p>
+                    <p className="pl-3 text-primary">
+                      {this.state.moviesWillWatch.length}
+                    </p>
+                  </div>
+                </div>
               </div>
-              <div className="row p-0">
+              <div
+                className="row"
+                style={{
+                  position: 'absolute',
+                  top: '60px',
+                  left: 0,
+                  width: '100%'
+                }}>
                 {this.state.movies.map((movie) => {
                   return (
                     <MovieItem
@@ -105,18 +139,6 @@ class App extends React.Component {
                   );
                 })}
               </div>
-            </div>
-          </div>
-          <div
-            className="col-3 pt-4"
-            style={{ position: 'relative', background: '#aaa' }}>
-            <div
-              className="d-flex justify-content-center align-items-center"
-              style={{ position: 'fixed' }}>
-              <p>Will watch:</p>
-              <p className="pl-3 text-primary">
-                {this.state.moviesWillWatch.length}
-              </p>
             </div>
           </div>
         </div>
