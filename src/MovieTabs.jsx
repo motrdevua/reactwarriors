@@ -1,7 +1,6 @@
 import React from 'react';
 
 const MovieTabs = (props) => {
-  console.log(props);
   const { sort_by, updateSortBy } = props;
 
   const handleClick = (value) => () => {
@@ -11,8 +10,6 @@ const MovieTabs = (props) => {
   const getClassNameByValue = (value) => {
     return `nav-link ${sort_by === value ? 'active' : ''}`;
   };
-
-  console.log(updateSortBy);
 
   return (
     <ul className="tabs nav nav-pills">

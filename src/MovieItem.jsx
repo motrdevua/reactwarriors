@@ -17,6 +17,25 @@ class MovieItem extends React.Component {
       removeMovieFromWillWatch
     } = this.props;
 
+    const getClassNameByValue = () => {
+      return `btn p-1 ${
+        this.state.moviesWillWatch ? 'btn-secondary' : 'btn-primary'
+      }`;
+    };
+    const handleClick = () => {
+      if (this.state.moviesWillWatch) {
+        this.setState({
+          moviesWillWatch: false
+        });
+        removeMovieFromWillWatch(movie);
+      } else {
+        this.setState({
+          moviesWillWatch: true
+        });
+        addMovieToWillWatch(movie);
+      }
+    };
+
     return (
       <div className="col-lg-6 col-md-6 col-sm-6 col-12 mb-3 ">
         <div className="card">
@@ -35,22 +54,8 @@ class MovieItem extends React.Component {
             className="p-1 d-flex justify-content-between align-items-center">
             <button
               type="button"
-              className={`btn p-1 ${
-                this.state.moviesWillWatch ? 'btn-secondary' : 'btn-primary'
-              }`}
-              onClick={() => {
-                if (this.state.moviesWillWatch) {
-                  this.setState({
-                    moviesWillWatch: false
-                  });
-                  removeMovieFromWillWatch(movie);
-                } else {
-                  this.setState({
-                    moviesWillWatch: true
-                  });
-                  addMovieToWillWatch(movie);
-                }
-              }}>
+              className={getClassNameByValue()}
+              onClick={handleClick}>
               {this.state.moviesWillWatch
                 ? 'will watch remove'
                 : 'will watch add'}
