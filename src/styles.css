@@ -3,40 +3,40 @@ body {
 }
 
 img {
+  min-height: 315px;
   width: 100%;
-  object-fit: cover;
+
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
-button,
-button:hover,
-button:focus,
-button:active {
+button, button:hover, button:focus, button:active {
   outline: none;
   box-shadow: unset;
   font-size: 12px !important;
 }
 
 body {
-  background: #eee;
+  background: #eeeeee;
 }
 .card {
   display: flex;
+  align-items: center;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center;
   width: 100%;
+  border: 0;
+  background: #ffffff;
+  box-shadow: 0 0 5px 0 rgba(83, 83, 83, .2);
   font-size: 14px;
-  border: 0px;
-background: #fff;
-box-shadow: 0 0 5px 0 rgba(83, 83, 83, .2);
 }
 
 .card__title {
   display: flex;
-  justify-content: center;
   align-items: center;
-  text-align: center;
+  justify-content: center;
   min-height: 75px;
+  text-align: center;
 }
 
 .card img {
@@ -44,32 +44,32 @@ box-shadow: 0 0 5px 0 rgba(83, 83, 83, .2);
 }
 
 .overview {
+  visibility: hidden;
+  overflow-y: scroll;
   height: 0;
   opacity: 0;
-  overflow-y: scroll;
-  visibility: hidden;
-  transition: all 0.2s linear;
+  transition: all .2s linear;
 }
 
 .overview--active {
+  visibility: visible;
   height: 150px;
   opacity: 1;
-  transition: all 0.2s linear;
-  visibility: visible;
+  transition: all .2s linear;
 }
 
 .rate {
   display: flex;
-  justify-content: center;
   display: contents;
+  justify-content: center;
 }
 
 .tabs {
   display: flex;
-  justify-content: flex-start;
   align-items: center;
-  list-style-type: none;
+  justify-content: flex-start;
   padding: 0;
+  list-style-type: none;
 }
 
 .tabs li {
@@ -77,11 +77,11 @@ box-shadow: 0 0 5px 0 rgba(83, 83, 83, .2);
 }
 
 .nav-link {
-  background: #bbb;
-  transition: all 0.2s linear;
+  background: #bbbbbb;
   cursor: pointer;
+  transition: all .2s linear;
 }
 .nav-link:hover {
-  transition: all 0.2s linear;
   cursor: pointer;
+  transition: all .2s linear;
 }

@@ -41,13 +41,17 @@ class MovieItem extends React.Component {
     };
 
     return (
-      <div className="col-6 mb-3">
+      <div className="col-lg-3 col-md-4 col-sm-6 col-12 mb-3">
         <div className="card">
           <p className="card__title mb-0">{movie.title}</p>
           <img
-            src={`https://image.tmdb.org/t/p/w500/${
+            src={
               movie.poster_path || movie.backdrop_path
-            }`}
+                ? `https://image.tmdb.org/t/p/w500/${
+                    movie.poster_path || movie.backdrop_path
+                  }`
+                : 'https://via.placeholder.com/315'
+            }
             alt={movie.title}
           />
           <p className="d-flex align-items-center justify-content-center rate p-2 m-0">

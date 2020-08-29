@@ -1,41 +1,43 @@
 import React from 'react';
 
-const MovieTabs = (props) => {
-  const { sort_by, updateSortBy } = props;
+class MovieTabs extends React.Component {
+  render() {
+    const { sort_by, updateSortBy } = this.props;
 
-  const handleClick = (value) => () => {
-    updateSortBy(value);
-  };
+    const handleClick = (value) => () => {
+      updateSortBy(value);
+    };
 
-  const getClassNameByValue = (value) => {
-    return `nav-link ${sort_by === value ? 'active' : ''}`;
-  };
+    const getClassNameByValue = (value) => {
+      return `nav-link ${sort_by === value ? 'active' : ''}`;
+    };
 
-  return (
-    <ul className="tabs nav nav-pills">
-      <li className="nav-item">
-        <div
-          className={getClassNameByValue('popularity.desc')}
-          onClick={handleClick('popularity.desc')}>
-          Popularity
-        </div>
-      </li>
-      <li className="nav-item">
-        <div
-          className={getClassNameByValue('revenue.desc')}
-          onClick={handleClick('revenue.desc')}>
-          Revenue
-        </div>
-      </li>
-      <li className="nav-item">
-        <div
-          className={getClassNameByValue('vote_average.desc')}
-          onClick={handleClick('vote_average.desc')}>
-          Vote average
-        </div>
-      </li>
-    </ul>
-  );
-};
+    return (
+      <ul className="tabs nav nav-pills">
+        <li className="nav-item">
+          <div
+            className={getClassNameByValue('popularity.desc')}
+            onClick={handleClick('popularity.desc')}>
+            Popularity
+          </div>
+        </li>
+        <li className="nav-item">
+          <div
+            className={getClassNameByValue('revenue.desc')}
+            onClick={handleClick('revenue.desc')}>
+            Revenue
+          </div>
+        </li>
+        <li className="nav-item">
+          <div
+            className={getClassNameByValue('vote_average.desc')}
+            onClick={handleClick('vote_average.desc')}>
+            Vote average
+          </div>
+        </li>
+      </ul>
+    );
+  }
+}
 
 export default MovieTabs;
