@@ -1,87 +1,169 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
+  font: inherit;
+  font-size: 100%;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+a {
+  text-decoration: none;
+}
+
 body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 img {
   width: 100%;
-  object-fit: cover;
+
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: top center;
+     object-position: top center;
 }
 
-button,
-button:hover,
-button:focus,
-button:active {
+button, button:hover, button:focus, button:active {
   outline: none;
   box-shadow: unset;
-  font-size: 12px !important;
 }
 
 body {
-  background: #eee;
+  background: #eeeeee;
 }
+
 .card {
   display: flex;
+  align-items: center;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center;
   width: 100%;
+  border: 0;
+  background: #ffffff;
+  box-shadow: 0 0 5px 0 rgba(83, 83, 83, .2);
   font-size: 14px;
-  border: 0px;
-background: #fff;
-box-shadow: 0 0 5px 0 rgba(83, 83, 83, .2);
 }
 
 .card__title {
   display: flex;
-  justify-content: center;
   align-items: center;
-  text-align: center;
+  justify-content: center;
   min-height: 75px;
+  text-align: center;
 }
 
 .card img {
+  min-height: 315px;
   max-height: 315px;
 }
 
 .overview {
+  visibility: hidden;
+  overflow-y: scroll;
   height: 0;
   opacity: 0;
-  overflow-y: scroll;
-  visibility: hidden;
-  transition: all 0.2s linear;
+  transition: all .2s linear;
 }
 
 .overview--active {
+  visibility: visible;
   height: 150px;
   opacity: 1;
-  transition: all 0.2s linear;
-  visibility: visible;
+  transition: all .2s linear;
 }
 
 .rate {
   display: flex;
-  justify-content: center;
   display: contents;
+  justify-content: center;
 }
 
 .tabs {
   display: flex;
-  justify-content: flex-start;
   align-items: center;
-  list-style-type: none;
+  justify-content: flex-start;
   padding: 0;
+  list-style-type: none;
 }
 
 .tabs li {
-  margin: 0 15px 0 0;
+  margin: 7.5px;
 }
 
 .nav-link {
-  background: #bbb;
-  transition: all 0.2s linear;
+  background: #bbbbbb;
   cursor: pointer;
+  transition: all .2s linear;
 }
+
 .nav-link:hover {
-  transition: all 0.2s linear;
   cursor: pointer;
+  transition: all .2s linear;
+}
+
+.cards {
+  position: absolute;
+  top: 85px;
+  left: 50%;
+  width: 100%;
+  transform: translateX(-50%);
+}
+
+@media screen and (max-width: 576px) {
+  .cards {
+    top: 115px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .cards {
+    top: 100px;
+  }
+}
+
+@media screen and (max-width: 528px) {
+  .cards {
+    top: 135px;
+  }
+}
+
+@media screen and (max-width: 415px) {
+  .cards {
+    top: 135px;
+  }
+}
+
+
+@media screen and (max-width: 342px) {
+  .cards {
+    top: 190px;
+  }
 }
