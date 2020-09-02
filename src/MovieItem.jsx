@@ -9,9 +9,9 @@ class MovieItem extends React.Component {
     };
   }
 
-  // componentWillUnmount() {
-  //   console.log('unmount');
-  // }
+  componentWillUnmount() {
+    console.log(this.props);
+  }
 
   render() {
     const {

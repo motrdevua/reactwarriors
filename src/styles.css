@@ -48,11 +48,8 @@ img {
 
   -o-object-fit: cover;
      object-fit: cover;
-<<<<<<< HEAD
   -o-object-position: top center;
      object-position: top center;
-=======
->>>>>>> 758416e0e0818e7d58b3f03cb447e7dd706fc650
 }
 
 button, button:hover, button:focus, button:active {
@@ -131,46 +128,4 @@ body {
 .nav-link:hover {
   cursor: pointer;
   transition: all .2s linear;
-<<<<<<< HEAD
-}
-
-.cards {
-  position: absolute;
-  top: 85px;
-  left: 50%;
-  width: 100%;
-  transform: translateX(-50%);
-}
-
-@media screen and (max-width: 576px) {
-  .cards {
-    top: 115px;
-  }
-}
-
-@media screen and (max-width: 576px) {
-  .cards {
-    top: 100px;
-  }
-}
-
-@media screen and (max-width: 528px) {
-  .cards {
-    top: 135px;
-  }
-}
-
-@media screen and (max-width: 415px) {
-  .cards {
-    top: 135px;
-  }
-}
-
-
-@media screen and (max-width: 342px) {
-  .cards {
-    top: 190px;
-  }
-=======
->>>>>>> 758416e0e0818e7d58b3f03cb447e7dd706fc650
 }

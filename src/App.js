@@ -3,6 +3,7 @@ import './styles.css';
 
 import MovieItem from './MovieItem';
 import MovieTabs from './MovieTabs';
+import Pagination from './Pagination';
 
 const API_URL = 'https://api.themoviedb.org/3';
 
@@ -14,8 +15,10 @@ class App extends React.Component {
 
     this.state = {
       movies: [],
+      total_pages: 0,
       moviesWillWatch: [],
-      sort_by: 'revenue.desc'
+      sort_by: 'revenue.desc',
+      page: 1
     };
 
     this.removeMovie = this.removeMovie.bind(this);
@@ -24,14 +27,15 @@ class App extends React.Component {
 
   getMovies = () => {
     fetch(
-      `${API_URL}/discover/movie?api_key=${API_KEY_3}&sort_by=${this.state.sort_by}`
+      `${API_URL}/discover/movie?api_key=${API_KEY_3}&sort_by=${this.state.sort_by}&page=${this.state.page}`
     )
       .then((response) => {
         return response.json();
       })
       .then((data) => {
         this.setState({
-          movies: data.results
+          movies: data.results,
+          total_pages: data.total_pages
         });
       });
   };
@@ -73,6 +77,9 @@ class App extends React.Component {
     if (prevState.sort_by !== this.state.sort_by) {
       this.getMovies();
     }
+    if (prevState.page !== this.state.page) {
+      this.getMovies();
+    }
   }
 
   updateSortBy = (value) => {
@@ -81,18 +88,19 @@ class App extends React.Component {
     });
   };
 
+  updatePage = (value) => {
+    this.setState({
+      page: value
+    });
+  };
+
   render() {
     return (
-<<<<<<< HEAD
       <>
         <div
           className="container-fluid"
           style={{
-            background: '#ccc',
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            zIndex: 9
+            background: '#ccc'
           }}>
           <div className="row justify-content-center">
             <div className="col-lg-9 col-md-9 col-9 p-3 d-flex justify-content-lg-start justify-content-md-start justify-content-center">
@@ -115,6 +123,11 @@ class App extends React.Component {
             </div>
           </div>
         </div>
+        <Pagination
+          page={this.state.page}
+          updatePage={this.updatePage}
+          totalPages={this.state.total_pages}
+        />
         <div className="cards">
           <div className="container">
             <div className="row mt-4">
@@ -132,71 +145,12 @@ class App extends React.Component {
             </div>
           </div>
         </div>
+        <Pagination
+          page={this.state.page}
+          updatePage={this.updatePage}
+          totalPages={this.state.total_pages}
+        />
       </>
-=======
-      <div className="container-fluid" style={{ position: 'relative' }}>
-        <div
-          className="row"
-          style={{
-            background: '#333',
-            position: 'fixed',
-            width: '100%',
-            zIndex: 2
-          }}>
-          <div className="container">
-            <div className="row">
-              <div className="col-lg-9 col-md-9 col-12 p-3">
-                <MovieTabs
-                  sort_by={this.state.sort_by}
-                  updateSortBy={this.updateSortBy}
-                />
-              </div>
-              <div
-                className="col-3 d-flex justify-content-center align-items-center"
-                style={{
-                  position: 'relative',
-                  background: '#aaa',
-                  fontSize: '24px'
-                }}>
-                <div className="d-flex justify-content-center align-items-center">
-                  <p style={{ margin: 0 }}>Will watch:</p>
-                  <p style={{ margin: 0 }} className="pl-3 text-primary">
-                    {this.state.moviesWillWatch.length}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div
-          className="row"
-          style={{
-            position: 'absolute',
-            top: '100px',
-            left: '50%',
-            width: '100%',
-            transform: 'translateX(-50%)',
-            zIndex: 1
-          }}>
-          <div className="container">
-            <div className="row">
-              {this.state.movies.map((movie) => {
-                return (
-                  <MovieItem
-                    key={movie.id}
-                    movie={movie}
-                    removeMovie={this.removeMovie}
-                    addMovieToWillWatch={this.addMovieToWillWatch}
-                    removeMovieFromWillWatch={this.removeMovieFromWillWatch}
-                  />
-                );
-              })}
-            </div>
-          </div>
-        </div>
-      </div>
->>>>>>> 758416e0e0818e7d58b3f03cb447e7dd706fc650
     );
   }
 }
